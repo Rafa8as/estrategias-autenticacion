@@ -34,10 +34,14 @@ const host = "0.0.0.0";
 mongoose.set ('strictQuery',false)
 
 const connection = mongoose.connect ('mongodb+srv://rafa8as:Odarita23@cluster0.mjxuonn.mongodb.net/?retryWrites=true&w=majority');
-const mongoUrl = "mongodb+srv://rafa8as:Odarita23@cluster0.mjxuonn.mongodb.net/?retryWrites=true&w=majority"
+const mongoUrl = "mongodb+srv://rafa8as:Odarita23@cluster0.mjxuonn.mongodb.net/?retryWrites=true&w=majority";
+const enviroment = async () => {
+    await mongoose.connect(mongoUrl);
+};
+enviroment();
 app.use(session({
     store: MongoStore.create({mongoUrl}),
-    secret: process.env.MONGO_PASS),
+    secret: (process.env.MONGO_PASS),
     resave: false,
     saveUninitialized: true,
 }))
