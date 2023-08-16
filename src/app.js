@@ -37,7 +37,7 @@ const connection = mongoose.connect ('mongodb+srv://rafa8as:Odarita23@cluster0.m
 const mongoUrl = "mongodb+srv://rafa8as:Odarita23@cluster0.mjxuonn.mongodb.net/?retryWrites=true&w=majority"
 app.use(session({
     store: MongoStore.create({mongoUrl}),
-    secret: (process.env.MONGO_PASS),
+    secret: process.env.MONGO_PASS),
     resave: false,
     saveUninitialized: true,
 }))
